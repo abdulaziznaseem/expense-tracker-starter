@@ -23,12 +23,7 @@ There is no test runner configured yet.
 - Vite 7 + React 19, plain JavaScript (`.jsx`), ES modules. No router, no state library, no backend, no persistence — data resets on reload.
 - `src/main.jsx` mounts `<App />` in `StrictMode`.
 - `src/App.jsx` is a single monolithic component holding everything: seed transaction data, form state, filter state, derived totals (income / expenses / balance), the add-transaction form, filters, and the transactions table. Styles live in `src/App.css` (global resets in `src/index.css`).
-- Transaction shape: `{ id, description, amount, type: "income" | "expense", category, date: "YYYY-MM-DD" }`. Categories are a hard-coded array in `App.jsx`.
-
-## Known issues in the starter code
-
-- `amount` is stored as a **string** (both in seed data and from the form input), so the `reduce` totals concatenate strings instead of summing numbers.
-- Seed entry "Freelance Work" has `type: "expense"` but `category: "salary"`.
+- Transaction shape: `{ id, description, amount, type: "income" | "expense", category, date: "YYYY-MM-DD" }`. `amount` must be a **number** (form input is a string — convert with `parseFloat` before storing) or the `reduce` totals concatenate strings. Categories are a hard-coded array in `App.jsx`.
 
 ## Lint notes
 
